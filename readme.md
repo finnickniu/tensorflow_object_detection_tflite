@@ -22,7 +22,7 @@ Instructions:
             make -j
             ./demo
     ```
-2. Run demo.cpp on arm64-v8a.
+2. Run demo.cpp on arm64-v8a ubuntu.
     1. Build libtensorflow-lite.a, followed by the tensorflow tutorial https://www.tensorflow.org/lite/guide/build_arm64. Careful about the arm version, v7 or v8.
     2. Move .a to tensorflow_object_detection_tflite/lib
     3. keep find_library(TFLITE_LIBRARY tensorflow-lite "lib") unchanged.
