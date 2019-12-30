@@ -34,7 +34,7 @@ Instructions:
             make -j
             ./demo
     ```
-3. if there is flatbuffers error, build it on your desktop, and use its header files and .a lib file, put and replace them into tensorflow_object_detection_tflite/include and tensorflow_object_detection_tflite/include, you can check here to now how to build. https://github.com/google/flatbuffers/issues/5569#issuecomment-543777629
+3. if there is a flatbuffers error, build flatbuffers on your desktop, and use its header files and .a lib file, put and replace them into tensorflow_object_detection_tflite/include and tensorflow_object_detection_tflite/include, you can check here to now how to build. https://github.com/google/flatbuffers/issues/5569#issuecomment-543777629
 
 4. Result image
 
