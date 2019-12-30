@@ -148,7 +148,7 @@ void test() {
 			auto out_cls = output_classes->data.f;
 			num_detections   = interpreter->tensor(interpreter->outputs()[3]);
 			auto nums = num_detections->data.f;
-			for (int i = 0; i < 20; i++){
+			for (int i = 0; i < nums; i++){
 				auto output = output_data[i];
 				locations.push_back(output);
 				cls.push_back(out_cls[i]);
