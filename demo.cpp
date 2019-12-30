@@ -132,7 +132,7 @@ void test() {
 			auto image_channels=3;
 			int number_of_pixels = image_height * image_width * image_channels;
 			int base_index = 0;
-
+			// copy image to input as input tensor
 			memcpy(interpreter->typed_input_tensor<uchar>(0), image.data, image.total() * image.elemSize());
 			interpreter->SetAllowFp16PrecisionForFp32(true);
 
