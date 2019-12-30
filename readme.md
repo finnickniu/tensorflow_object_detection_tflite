@@ -23,10 +23,11 @@ Instructions:
             ./demo
     ```
 2. Run demo.cpp on arm64-v8a ubuntu.
-    1. Build libtensorflow-lite.a, followed by the tensorflow tutorial https://www.tensorflow.org/lite/guide/build_arm64. Careful about the arm version, v7 or v8.
-    2. Move .a to tensorflow_object_detection_tflite/lib
-    3. keep find_library(TFLITE_LIBRARY tensorflow-lite "lib") unchanged.
-    4. Build cmake
+    1. Intall opencv on your arm64 motherboard.
+    2. Build libtensorflow-lite.a, followed by the tensorflow tutorial https://www.tensorflow.org/lite/guide/build_arm64. Careful about the arm version, v7 or v8.
+    3. Move .a to tensorflow_object_detection_tflite/lib
+    4. keep find_library(TFLITE_LIBRARY tensorflow-lite "lib") unchanged.
+    5. Build cmake
     ```
             mkdir build
             cd build
