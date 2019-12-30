@@ -5,6 +5,7 @@ System: Ubuntu 18.04
 Opencv: opencv 3.2
 
 
+Instructions:
 
 1. Run demo.cpp on x86 unbuntu, make sure opencv and bazel is installed.
     1. Build libtensorflowlite.so, under the tensorflow directory.
