@@ -1,4 +1,5 @@
-1. Run demo.cpp on x86 unbuntu, make sure opencv is installed.
+
+1. Run demo.cpp on x86 unbuntu, make sure opencv and bazel is installed.
     1. Build libtensorflowlite.so, under the tensorflow directory.
     ```
                 bazel build -c opt //tensorflow/lite:libtensorflowlite.so --fat_apk_cpu=arm64-v8a
@@ -27,3 +28,7 @@
     ```
 3. if there is flatbuffers error, build it in your desktop, and use its header files and .a lib file, you can check here to now how to build. https://github.com/google/flatbuffers/issues/5569#issuecomment-543777629
 
+4. Result image
+
+
+![Screenshot](result.jpg)
