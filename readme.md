@@ -4,7 +4,7 @@
     ```
                 bazel build -c opt //tensorflow/lite:libtensorflowlite.so --fat_apk_cpu=arm64-v8a
     ```
-    2. Move .so to /lib
+    2. Move .so to tensorflow_object_detection_tflite/lib
     3. Change find_library(TFLITE_LIBRARY tensorflow-lite "lib") to find_library(TFLITE_LIBRARY tensorflowlite "lib") in CMakeLists.txt
     4. Build cmake
     ```
@@ -16,7 +16,7 @@
     ```
 2. Run demo.cpp on arm64-v8a.
     1. Build libtensorflow-lite.a, followed by the tensorflow tutorial https://www.tensorflow.org/lite/guide/build_arm64. Careful about the arm version, v7 or v8.
-    2. Move .a to /lib
+    2. Move .a to tensorflow_object_detection_tflite/lib
     3. keep find_library(TFLITE_LIBRARY tensorflow-lite "lib") unchanged.
     4. Build cmake
     ```
