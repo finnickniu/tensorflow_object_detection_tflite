@@ -1,11 +1,11 @@
-**System Environment:
+**System Environment**:
 
 System: Ubuntu 18.04
 
 Opencv: opencv 3.2
 
 
-**Instructions:
+**Instructions**:
 
 1. Run demo.cpp on x86 unbuntu, make sure opencv and bazel is installed.
     1. Build libtensorflowlite.so, under the tensorflow directory.
@@ -13,7 +13,7 @@ Opencv: opencv 3.2
                 bazel build -c opt //tensorflow/lite:libtensorflowlite.so --fat_apk_cpu=arm64-v8a
     ```
     2. Move .so to **tensorflow_object_detection_tflite/lib**
-    3. Change **find_library(TFLITE_LIBRARY tensorflow-lite "lib")** to **find_library(TFLITE_LIBRARY tensorflowlite "lib") **in **CMakeLists.txt**.
+    3. Change **find_library(TFLITE_LIBRARY tensorflow-lite "lib")** to **find_library(TFLITE_LIBRARY tensorflowlite "lib")** in **CMakeLists.txt**.
     4. Build cmake
     ```
             mkdir build
