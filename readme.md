@@ -35,7 +35,7 @@ Opencv: opencv 3.2
             make -j
             ./demo
     ```
-3. If there is a flatbuffers error, build flatbuffers on your desktop, and use its header files and .a lib file, put and replace them into tensorflow_object_detection_tflite/include and tensorflow_object_detection_tflite/lib, respectively. You can check here to know how to build. https://github.com/google/flatbuffers/issues/5569#issuecomment-543777629
+3. If there is a flatbuffers error, you should build flatbuffers on your desktop, and use its header files and .a lib file, put and replace them into tensorflow_object_detection_tflite/include and tensorflow_object_detection_tflite/lib, respectively. You can check here to know how to build. https://github.com/google/flatbuffers/issues/5569#issuecomment-543777629
 
 4. Result image
 
