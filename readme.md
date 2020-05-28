@@ -47,8 +47,7 @@ Tensorflow: 1.13.1
     test
     input_path:  "/path_to/train.record"
 ```
-3. Training
-Bakcup the old IG folder and create a new one first, and clean up all files in CP folder.
+1. Training
 ``` 
     
     cd models/research/
