@@ -85,7 +85,8 @@ Use export_tflite_ssd_graph.py generate tflite_graph.pb
 ```
    tflite::FlatBufferModel::BuildFromFile("../model.tflite");
 ```
-2. Run demo.cpp on x86 unbuntu, make sure opencv and bazel are installed.
+2. Modify the labelmap.txt with you annotation if you fine tuned your model.
+3. Run demo.cpp on x86 unbuntu, make sure opencv and bazel are installed.
     1. Build libtensorflowlite.so, under the tensorflow directory.
     ```
                 bazel build -c opt //tensorflow/lite:libtensorflowlite.so --fat_apk_cpu=arm64-v8a
@@ -100,7 +101,7 @@ Use export_tflite_ssd_graph.py generate tflite_graph.pb
             make -j
             ./demo
     ```
-3. Run demo.cpp on arm64-v8a ubuntu.
+4. Run demo.cpp on arm64-v8a ubuntu.
     1. Intall opencv on your arm64 motherboard.
     2. Build libtensorflow-lite.a, followed by the tensorflow tutorial https://www.tensorflow.org/lite/guide/build_arm64. Careful about the arm version, v7 or v8.
     3. Move .a to **tensorflow_object_detection_tflite/lib**
@@ -113,7 +114,7 @@ Use export_tflite_ssd_graph.py generate tflite_graph.pb
             make -j
             ./demo
     ```
-4. If there is a flatbuffers error, you should build flatbuffers on your desktop, and use its header files and .a lib file, put and replace them into tensorflow_object_detection_tflite/include and tensorflow_object_detection_tflite/lib, respectively. You can check here to know how to build. https://github.com/google/flatbuffers/issues/5569#issuecomment-543777629
+5. If there is a flatbuffers error, you should build flatbuffers on your desktop, and use its header files and .a lib file, put and replace them into tensorflow_object_detection_tflite/include and tensorflow_object_detection_tflite/lib, respectively. You can check here to know how to build. https://github.com/google/flatbuffers/issues/5569#issuecomment-543777629
 
 5. Result image
 
