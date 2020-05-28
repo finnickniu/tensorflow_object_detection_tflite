@@ -62,16 +62,29 @@ Tensorflow: 1.13.1
 ```
     tensorboard --logdir=/path_to/mobilenet_ssd_v2_train/CP
 ```
-5. Export your model to frozen graph.
+5. Export your model to frozen graph, with can cheeck the results with demo.py.
 ```
     python object_detection/export_inference_graph.py --input_type=image_tensor --pipeline_config_path=/path_to/pipleline.config --trained_checkpoint_prefix=/path_to/mobilenet_ssd_v2_train/CP/model.ckpt-xxxxxx --output_directory=/path_to/mobilenet_ssd_v2_train/IG/
 ```
-6. Convert frozen_graph to tf_lite
+6. Add label_map.json.
+```
+    {
+        "1": "person"
+    }
+    {
+        "2": "car"
+    }
+```   
+7. Run demo.py.
+```
+    python demo.py PATH_TO_FROZEN_GRAPH cam_dir js_file
+```
+8. Convert frozen_graph to tf_lite
 Use export_tflite_ssd_graph.py generate tflite_graph.pb  
 ```
     python object_detection/export_tflite_ssd_graph.py --input_type=image_tensor --pipeline_config_path=path to/models/research/object_detection/mobilenet_ssd_v2_train/IG/pipeline.config --trained_checkpoint_prefix=path to/models/research/object_detection/mobilenet_ssd_v2_train/IG/model.ckpt --output_directory=path to/models/research/object_detection/mobilenet_ssd_v2_train/tflite --add_postprocessing_op=true
 ```
-7. Convert tflite_graph.pb to model.tflite
+9. Convert tflite_graph.pb to model.tflite
 ```
     tflite_convert --output_file=path to/models/research/object_detection/mobilenet_ssd_v2_train/tflite/model.tflite --graph_def_file=path to/models/research/object_detection/mobilenet_ssd_v2_train/tflite/tflite_graph.pb --input_arrays=normalized_input_image_tensor --output_arrays='TFLite_Detection_PostProcess','TFLite_Detection_PostProcess:1','TFLite_Detection_PostProcess:2','TFLite_Detection_PostProcess:3' --input_shape=1,300,300,3 --allow_custom_ops --output_format=TFLITE --inference_type=QUANTIZED_UINT8 --mean_values=128 --std_dev_values=127
 
