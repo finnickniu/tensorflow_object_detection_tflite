@@ -36,7 +36,7 @@ Tensorflow: 1.13.1
     python object_detection/dataset_tools/create_coco_tf_record.py --image_dir=/path_to/img/ --ann_dir=/path_to/ann/ --output_path=/path_to/train.record --label_map_path=/path_to/demo/label.pbtxt
 ```
 
-## Train tensoflow model(fine tuning)
+## Train tensorflow model(fine tuning)
 
 1. Download the 'mobilenet ssd v2 quantized' model from model zoo, and replace it with models/research/object_detection/mobilenet_ssd_v2_train/pretrained_models(the origin one is the 'mobilenet ssd v2 quantized' as well)
 2. Modify the data path in pipeline.config. The data is the tf record you generated. 
@@ -62,7 +62,7 @@ Tensorflow: 1.13.1
 ```
     tensorboard --logdir=/path_to/mobilenet_ssd_v2_train/CP
 ```
-5. Export your model to frozen graph, with can cheeck the results with demo.py.
+5. Export your model to frozen graph, which can cheeck the results with demo.py.
 ```
     python object_detection/export_inference_graph.py --input_type=image_tensor --pipeline_config_path=/path_to/pipleline.config --trained_checkpoint_prefix=/path_to/mobilenet_ssd_v2_train/CP/model.ckpt-xxxxxx --output_directory=/path_to/mobilenet_ssd_v2_train/IG/
 ```
