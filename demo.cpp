@@ -4,6 +4,7 @@
 #include "tensorflow/lite/model.h"
 
 #include <iostream>
+#include <fstream>
 #include <opencv2/opencv.hpp>
 #include <cmath>
 
@@ -98,8 +99,8 @@ void test() {
 		TfLiteTensor* output_classes = nullptr;
 		TfLiteTensor* num_detections = nullptr;
 		// TfLiteTensor* scores = nullptr;
-		auto cam = cv::VideoCapture(0);
-		// auto cam = cv::VideoCapture("../demo.mp4");
+		//auto cam = cv::VideoCapture(0);
+		auto cam = cv::VideoCapture("../car.jpeg");
 
 		std::vector<std::string> labels;
 
@@ -111,8 +112,8 @@ void test() {
 
 		}
 
-		auto cam_width =cam.get(CV_CAP_PROP_FRAME_WIDTH);
-		auto cam_height = cam.get(CV_CAP_PROP_FRAME_HEIGHT);
+		auto cam_width =cam.get(CAP_PROP_FRAME_WIDTH);
+		auto cam_height = cam.get(CAP_PROP_FRAME_HEIGHT);
 		while (true) {
 			cv::Mat image0;
 			auto success = cam.read(image0);
@@ -206,7 +207,7 @@ void test() {
 			}
 			
 			cv::imshow("cam", image0);
-			auto k = cv::waitKey(30);
+			auto k = cv::waitKey(3000);
 			if (k != 255) {
 					break;
 			}
