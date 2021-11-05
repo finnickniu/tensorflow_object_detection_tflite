@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <opencv2/opencv.hpp>
+#include <opencv2/highgui.hpp>
 #include <cmath>
 
 using namespace std;
@@ -87,7 +88,7 @@ void test() {
  
 		// Load model
 		std::unique_ptr<tflite::FlatBufferModel> model =
-		tflite::FlatBufferModel::BuildFromFile("../detect.tflite");
+		tflite::FlatBufferModel::BuildFromFile("../model.tflite");
 		// Build the interpreter
 		tflite::ops::builtin::BuiltinOpResolver resolver;
 		std::unique_ptr<tflite::Interpreter> interpreter;
@@ -194,6 +195,7 @@ void test() {
 
 					Object object = objects.at(l);
 					auto score=object.prob;
+					std::cout<<"score:"<< score<<std::endl;
 					if (score < 0.60f) continue;
 					Scalar color = Scalar(rng.uniform(0,255), rng.uniform(0, 255), rng.uniform(0, 255));
 					auto cls = object.class_id;
@@ -202,12 +204,32 @@ void test() {
 					cv::putText(image0, labels[cls+1], cv::Point(object.rec.x, object.rec.y - 5),
 					cv::FONT_HERSHEY_COMPLEX, .8, cv::Scalar(10, 255, 30));
 					std::cout<< cls<< std::endl;
+					//for blurring
+					if (object.rec.x<0){
+						std::cout<<object.rec.x<<std::endl;
+						object.rec.x=0;
+						std::cout<<object.rec.x<<std::endl;
+					}
+					if (object.rec.y<0){
+						std::cout<<object.rec.y<<std::endl;
+						object.rec.y=0;
+						std::cout<<object.rec.y<<std::endl;
+					}
+					
+					cv::Rect region(object.rec.x, object.rec.y, object.rec.width, object.rec.height);
+					
+					cv::GaussianBlur(image0(region), image0(region), Size(0, 0), 4);
+					std::cout<<"2"<<std::endl;//
 
 	
 			}
-			
+			cv::namedWindow( "cam", cv::WINDOW_AUTOSIZE );
+			std::cout<<"before imshow"<<std::endl;
 			cv::imshow("cam", image0);
-			auto k = cv::waitKey(3000);
+			
+			std::cout<<"after imshow"<<std::endl;
+			auto k = cv::waitKey(5000);
+			cv::imwrite("../cam.png",image0);
 			if (k != 255) {
 					break;
 			}
